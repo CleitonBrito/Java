@@ -5,7 +5,6 @@ import java.util.Scanner;
 public class MatrizOrdem3 {
     
     private int TAMANHO = 3; //Tamanho da matriz: 3x3
-    //private int TamLinha, TamColuna;
     private float [][]MatrizNew = new float [TAMANHO][TAMANHO+2];
     private float [][]MatrizX = new float[TAMANHO][TAMANHO+2]; // Matriz X
     private float [][]MatrizY = new float[TAMANHO][TAMANHO+2]; // Matriz Y
