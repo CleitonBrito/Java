@@ -166,6 +166,6 @@ public class MatrizOrdem3 {
     }
     
     protected float DetZ (){
-        return (PDiagPrin(MatrizZ,3,5)-PDiagSec(MatrizZ,3,5))/DetA(MatrizNew,3,5);
+        return  (PDiagPrin(MatrizZ,3,5)-PDiagSec(MatrizZ,3,5))/DetA(MatrizNew,3,5);
     }
 }
