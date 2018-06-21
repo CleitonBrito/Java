@@ -7,8 +7,8 @@ public class MatrizOrdem2{
     private int TAMANHO = 2; //Tamanho da matriz: 2x2
     private float [][]MatrizX = new float[TAMANHO][TAMANHO]; // Matriz X
     private float [][]MatrizY = new float[TAMANHO][TAMANHO]; // Matriz Y
-    private int PDiagPrin=1, PDiagSec=1; //Produto da diagonal primária/secundária
-    private int num1, num2; //Igualdades, número 1 e 2
+    private float PDiagPrin=1, PDiagSec=1; //Produto da diagonal primária/secundária
+    private float num1, num2; //Igualdades, número 1 e 2
     private int linha, coluna;
 
     protected void Igualdade (){ //Inserir os dois números da outra matriz igualdade
@@ -16,9 +16,9 @@ public class MatrizOrdem2{
         Scanner num2 = new Scanner(System.in);
         System.out.println("");
         System.out.print("Primeiro número: ");
-        this.num1 = num1.nextInt();
+        this.num1 = num1.nextFloat();
         System.out.print("Segundo número: ");
-        this.num2 = num2.nextInt();
+        this.num2 = num2.nextFloat();
     }
 
     protected void MostrarMatriz (float [][]Matriz){
