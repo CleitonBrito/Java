@@ -21,6 +21,9 @@ public class Ordem2Mostrar extends javax.swing.JFrame {
         lblPos01.setText(valor.getValor01());
         lblPos10.setText(valor.getValor10());
         lblPos11.setText(valor.getValor11());
+        lblDiagP.setText(""+valor.getPDiagPrin());
+        lblDiagS.setText(""+valor.getPDiagSec());
+        lblDeter.setText(""+valor.getDet());
     }
      
     @SuppressWarnings("unchecked")
@@ -35,10 +38,19 @@ public class Ordem2Mostrar extends javax.swing.JFrame {
         jSeparator3_2 = new javax.swing.JSeparator();
         lblSubTitulo2_2 = new javax.swing.JLabel();
         BotaoVoltar = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         lblPos00 = new javax.swing.JLabel();
         lblPos01 = new javax.swing.JLabel();
         lblPos10 = new javax.swing.JLabel();
         lblPos11 = new javax.swing.JLabel();
+        lblDiagP = new javax.swing.JLabel();
+        lblDiagS = new javax.swing.JLabel();
+        lblDeter = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -52,16 +64,16 @@ public class Ordem2Mostrar extends javax.swing.JFrame {
         lblSubTitulo_2.setFont(new java.awt.Font("Unispace", 0, 12)); // NOI18N
         lblSubTitulo_2.setText("Matriz");
         getContentPane().add(lblSubTitulo_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, -1, -1));
-        getContentPane().add(jSeparator2_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, 80, 10));
+        getContentPane().add(jSeparator2_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 100, 80, 10));
 
         lblSubTitulo1_2.setFont(new java.awt.Font("Unispace", 0, 12)); // NOI18N
         lblSubTitulo1_2.setText("MatrizX");
-        getContentPane().add(lblSubTitulo1_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 80, -1, -1));
-        getContentPane().add(jSeparator3_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 100, 80, 10));
+        getContentPane().add(lblSubTitulo1_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 80, -1, -1));
+        getContentPane().add(jSeparator3_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 100, 80, 10));
 
         lblSubTitulo2_2.setFont(new java.awt.Font("Unispace", 0, 12)); // NOI18N
         lblSubTitulo2_2.setText("MatrizY");
-        getContentPane().add(lblSubTitulo2_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 80, -1, -1));
+        getContentPane().add(lblSubTitulo2_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 80, -1, -1));
 
         BotaoVoltar.setText("Voltar");
         BotaoVoltar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -75,13 +87,50 @@ public class Ordem2Mostrar extends javax.swing.JFrame {
                 BotaoVoltarKeyPressed(evt);
             }
         });
-        getContentPane().add(BotaoVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, -1, -1));
-        getContentPane().add(lblPos00, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, -1, -1));
-        getContentPane().add(lblPos01, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, -1, -1));
-        getContentPane().add(lblPos10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, -1, -1));
-        getContentPane().add(lblPos11, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 180, -1, -1));
+        getContentPane().add(BotaoVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, -1, -1));
 
-        setSize(new java.awt.Dimension(522, 379));
+        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setText("Diagonal Principal: ");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, -1, -1));
+
+        jLabel2.setText("Diagonal Secundária:");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, -1, -1));
+
+        jLabel3.setText("Determinante:");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, -1, -1));
+
+        lblPos00.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jPanel1.add(lblPos00, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, -1, -1));
+
+        lblPos01.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jPanel1.add(lblPos01, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 50, -1, -1));
+
+        lblPos10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jPanel1.add(lblPos10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, -1, -1));
+
+        lblPos11.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jPanel1.add(lblPos11, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, -1, -1));
+
+        lblDiagP.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jPanel1.add(lblDiagP, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 150, 40, -1));
+
+        lblDiagS.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jPanel1.add(lblDiagS, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, 40, -1));
+
+        lblDeter.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jPanel1.add(lblDeter, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 190, 40, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 180, 210));
+
+        jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 70, 180, 210));
+
+        jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 70, 180, 210));
+
+        setSize(new java.awt.Dimension(639, 401));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -140,9 +189,18 @@ public class Ordem2Mostrar extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotaoVoltar;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JSeparator jSeparator2_2;
     private javax.swing.JSeparator jSeparator3_2;
     private javax.swing.JSeparator jSeparator_2;
+    private javax.swing.JLabel lblDeter;
+    private javax.swing.JLabel lblDiagP;
+    private javax.swing.JLabel lblDiagS;
     private javax.swing.JLabel lblPos00;
     private javax.swing.JLabel lblPos01;
     private javax.swing.JLabel lblPos10;
@@ -176,6 +234,30 @@ public class Ordem2Mostrar extends javax.swing.JFrame {
     }
     public void setLblPos11(javax.swing.JLabel lblPos11) {
         this.lblPos11 = lblPos11;
+    }
+
+    public javax.swing.JLabel getLblDeter() {
+        return lblDeter;
+    }
+
+    public void setLblDeter(javax.swing.JLabel lblDeter) {
+        this.lblDeter = lblDeter;
+    }
+
+    public javax.swing.JLabel getLblDiagP() {
+        return lblDiagP;
+    }
+
+    public void setLblDiagP(javax.swing.JLabel lblDiagP) {
+        this.lblDiagP = lblDiagP;
+    }
+
+    public javax.swing.JLabel getLblDiagS() {
+        return lblDiagS;
+    }
+
+    public void setLblDiagS(javax.swing.JLabel lblDiagS) {
+        this.lblDiagS = lblDiagS;
     }
 
     private void setIcon() {

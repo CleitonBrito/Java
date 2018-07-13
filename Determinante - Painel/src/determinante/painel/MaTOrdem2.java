@@ -2,22 +2,114 @@ package determinante.painel;
 
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
-public class MaTOrdem2 extends javax.swing.JFrame {
+public class MaTOrdem2 extends javax.swing.JFrame{
     
+    private int TAMANHO = 2; //Tamanho da matriz: 2x2
+    private float [][]Matriz = new float[TAMANHO][TAMANHO]; // Matriz
+    private float [][]MatrizX = new float[TAMANHO][TAMANHO]; // Matriz X
+    private float [][]MatrizY = new float[TAMANHO][TAMANHO]; // Matriz Y
+    private float PDiagPrin, PDiagSec; //Produto da diagonal primária/secundária
+    private float Det;
+    private float num1, num2; //Igualdades, número 1 e 2
+    private int linha, coluna;
     private String Valor00;
     private String Valor01;
     private String Valor10;
     private String Valor11;
-    
-    
+    private String INum1;
+    private String INum2;
     Ordem2Mostrar ordem2Mostrar = new Ordem2Mostrar();
     
     public MaTOrdem2() {
         initComponents();
         setIcon();
+        setValor00("");
+        setValor01("");
+        setValor10("");
+        setValor11("");
+        setINum1("");
+        setINum2("");
     }
- 
+    
+    private void Igualdade(){
+        this.num1 = Float.parseFloat(getINum1());
+        this.num2 = Float.parseFloat(getINum2());
+    }
+    
+    private void CriarMatriz(){
+        this.Matriz[0][0] = Float.parseFloat(getValor00());
+        this.Matriz[0][1] = Float.parseFloat(getValor01());
+        this.Matriz[1][0] = Float.parseFloat(getValor10());
+        this.Matriz[1][1] = Float.parseFloat(getValor11());
+    }
+    
+    protected float PDiagPrin (float [][]Matriz){ // Produto da diagonal principal
+        this.PDiagPrin=1;
+        for(linha=0; linha < TAMANHO; linha++){
+            for(coluna=0; coluna < TAMANHO; coluna++){
+                if(linha==coluna){
+                    this.PDiagPrin *= Matriz[linha][coluna];
+                }
+            }    
+        }
+        System.out.println("AA");
+        return this.PDiagPrin;
+    }
+
+    
+     protected float PDiagSec (float [][]Matriz){ //Produto da diagonal secundária
+        setPDiagSec(1);
+        for(linha=0; linha < TAMANHO; linha++){
+            for(coluna=0; coluna < TAMANHO; coluna++){
+                if(linha+coluna==TAMANHO-1){
+                    setPDiagSec(getPDiagSec() * Matriz[linha][coluna]);
+                }
+            }
+        }
+        return getPDiagSec();
+    }
+     
+    protected float Det (float [][]Matriz){ // Determinante da Matriz
+        return this.Det = PDiagPrin(Matriz)-PDiagSec(Matriz);
+    }
+    
+    protected float[][] MatX (float [][]Matriz){ //Determinante de X
+       for(linha=0; linha < TAMANHO; linha++){
+            for(coluna=0; coluna < TAMANHO; coluna++){
+                if(coluna==0){
+                    this.MatrizX[0][0] = this.num1;
+                    this.MatrizX[1][0] = this.num2;
+                }else
+                    this.MatrizX[linha][coluna] = Matriz[linha][coluna];
+            }
+       }
+       return this.MatrizX;
+   }
+
+    protected float[][] MatY (float [][]Matriz){ //Determinante de Y
+        for(linha=0; linha < TAMANHO; linha++){
+            for(coluna=0; coluna < TAMANHO; coluna++){
+                if(coluna==1){
+                    this.MatrizY[0][1] = this.num1;
+                    this.MatrizY[1][1] = this.num2;
+                }else
+                    this.MatrizY[linha][coluna] = Matriz[linha][coluna];
+            }
+        }
+        return this.MatrizY;
+    }
+    
+    protected float DetX (float [][]Matriz){
+        return ((PDiagPrin(MatrizX)-PDiagSec(MatrizX)))/Det(Matriz);
+    }
+    
+    protected float DetY(float [][]Matriz){
+        return ((PDiagPrin(MatrizY)-PDiagSec(MatrizY)))/Det(Matriz);
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -58,11 +150,6 @@ public class MaTOrdem2 extends javax.swing.JFrame {
             }
         });
 
-        Pos01.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Pos01ActionPerformed(evt);
-            }
-        });
         Pos01.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 Pos01KeyPressed(evt);
@@ -228,10 +315,6 @@ public class MaTOrdem2 extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_Pos10KeyPressed
 
-    private void Pos01ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Pos01ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Pos01ActionPerformed
-
     private void Pos01KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Pos01KeyPressed
         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
             getPos10().requestFocus();
@@ -245,45 +328,55 @@ public class MaTOrdem2 extends javax.swing.JFrame {
     }//GEN-LAST:event_Pos11KeyPressed
 
     private void BotaoOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoOkActionPerformed
-        Ordem2Mostrar Mostrar = new Ordem2Mostrar();
-        if(!Pos00.getText().equals(""))
-            setValor00(Pos00.getText());
-        else
-            setValor00("null");
-        if(!Pos01.getText().equals(""))
-            setValor01(Pos01.getText());
-        else
-            setValor01("null");
-        if(!Pos10.getText().equals(""))
-            setValor10(Pos10.getText());
-        else
-            setValor10("null");
-        if(!Pos11.getText().equals(""))
-            setValor11(Pos11.getText());
-        else
-            setValor11("null");
-
-        Mostrar.Matriz(this);
-        Mostrar.setVisible(true);
-
-        MaTOrdem2.this.dispose();
-        
-
-    }//GEN-LAST:event_BotaoOkActionPerformed
-
-    private void BotaoOkKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BotaoOkKeyPressed
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+        if(Pos00.getText().isEmpty() || Pos01.getText().isEmpty() || Pos10.getText().isEmpty() ||
+           Pos11.getText().isEmpty() || Num1.getText().isEmpty() || Num2.getText().isEmpty()){
+                JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
+                Pos00.requestFocus();
+        }else{    
             Ordem2Mostrar Mostrar = new Ordem2Mostrar();
             setValor00(Pos00.getText());
             setValor01(Pos01.getText());
             setValor10(Pos10.getText());
             setValor11(Pos11.getText());
+            setINum1(Num1.getText());
+            setINum2(Num2.getText());
+            
+            CriarMatriz();
+            PDiagPrin(this.Matriz);
+            PDiagSec(this.Matriz);
+            Det(this.Matriz);
             Mostrar.Matriz(this);
             Mostrar.setVisible(true);
 
             MaTOrdem2.this.dispose();
-
         }
+
+    }//GEN-LAST:event_BotaoOkActionPerformed
+
+    private void BotaoOkKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BotaoOkKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            if(Pos00.getText().isEmpty() || Pos01.getText().isEmpty() || Pos10.getText().isEmpty() || 
+                Pos11.getText().isEmpty() || Num1.getText().isEmpty() || Num2.getText().isEmpty()){
+                JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
+            }else{
+                Ordem2Mostrar Mostrar = new Ordem2Mostrar();
+                setValor00(Pos00.getText());
+                setValor01(Pos01.getText());
+                setValor10(Pos10.getText());
+                setValor11(Pos11.getText());
+                setINum1(Num1.getText());
+                setINum2(Num2.getText());
+                
+                CriarMatriz();
+                PDiagPrin(this.Matriz);
+                PDiagSec(this.Matriz);
+                Det(this.Matriz);
+                Mostrar.Matriz(this);
+                Mostrar.setVisible(true);
+
+                MaTOrdem2.this.dispose();
+                }
+            }
     }//GEN-LAST:event_BotaoOkKeyPressed
 
     private void Num1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Num1KeyPressed
@@ -368,18 +461,23 @@ public class MaTOrdem2 extends javax.swing.JFrame {
     public void setPos11(javax.swing.JTextField Pos11) {
         this.Pos11 = Pos11;
     }
-    public javax.swing.JTextField getNum1() {
+    
+    public JTextField getNum1() {
         return Num1;
     }
-    public void setNum1(javax.swing.JTextField Num1) {
-        this.Num1 = Num1;
+
+    public void setNum1(JTextField sNum1) {
+        this.Num1 = sNum1;
     }
-    public javax.swing.JTextField getNum2() {
+
+    public JTextField getNum2() {
         return Num2;
     }
-    public void setNum2(javax.swing.JTextField Num2) {
-        this.Num2 = Num2;
+
+    public void setNum2(JTextField sNum2) {
+        this.Num2 = sNum2;
     }
+    
     public String getValor00() {
         return Valor00;
     }
@@ -410,6 +508,46 @@ public class MaTOrdem2 extends javax.swing.JFrame {
 
     public void setValor11(String Valor11) {
         this.Valor11 = Valor11;
+    }
+
+    public String getINum1() {
+        return INum1;
+    }
+
+    public void setINum1(String INum1) {
+        this.INum1 = INum1;
+    }
+
+    public String getINum2() {
+        return INum2;
+    }
+
+    public void setINum2(String INum2) {
+        this.INum2 = INum2;
+    }
+ 
+    public float getPDiagPrin() {
+        return PDiagPrin;
+    }
+
+    public void setPDiagPrin(float PDiagPrin) {
+        this.PDiagPrin = PDiagPrin;
+    }
+
+    public float getPDiagSec() {
+        return PDiagSec;
+    }
+
+    public void setPDiagSec(float PDiagSec) {
+        this.PDiagSec = PDiagSec;
+    }
+
+    public float getDet() {
+        return Det;
+    }
+
+    public void setDet(float Det) {
+        this.Det = Det;
     }
     
     private void setIcon() {
