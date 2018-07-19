@@ -46,16 +46,22 @@ public class ItemVenda {
         this.venda = venda;
     }
 
+<<<<<<< Updated upstream
     /**
      * @return the situacao
      */
+=======
+>>>>>>> Stashed changes
     public String getSituacao() {
         return situacao;
     }
 
+<<<<<<< Updated upstream
     /**
      * @param situacao the situacao to set
      */
+=======
+>>>>>>> Stashed changes
     public void setSituacao(String situacao) {
         this.situacao = situacao;
     }

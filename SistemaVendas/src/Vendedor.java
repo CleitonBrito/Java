@@ -15,11 +15,20 @@ public class Vendedor {
         return new Venda(cod, data, cliente, vendedor, formaPagamento);
     }
     public String cancelarVenda(Venda venda){
+<<<<<<< Updated upstream
         venda.setSituacao("Cancelado");
         return "Venda cancelada com sucesso!!!";
     }
     public String cancelarItem(){
         return"";
+=======
+        venda.setSituacao("Cancelado!");
+        return "Venda cancelada com sucesso!!!";
+    }
+    public String cancelarItem(ItemVenda item){
+        item.setSituacao("Cancelado!");
+        return "Cancelado!";
+>>>>>>> Stashed changes
     }
     public Produto cadastrarProduto(int cod, int quantidade, double valorUnit, String tipo, String nome){
         return new Produto(cod, quantidade, valorUnit, tipo, nome);
@@ -37,6 +46,10 @@ public class Vendedor {
         item.setQuantidade(quantidade);
         item.setSubTotal(subTotal);
         item.setVenda(venda);
+<<<<<<< Updated upstream
+=======
+        item.setSituacao("Ativo");
+>>>>>>> Stashed changes
         
         return item;
     }
@@ -75,6 +88,7 @@ public class Vendedor {
         for(ItemVenda linha : itens){
             if(linha!=null){
                 if(linha.getVenda()==venda){
+<<<<<<< Updated upstream
                     System.out.println(
                             "Código: "+linha.getCod()+" Desconto: "+linha.getDesconto()+" Produto: "+linha.getProduto().getNome()
                                     +" Quantidade: "+linha.getQuantidade()+" Sub Total: "+linha.getSubTotal());
@@ -88,14 +102,111 @@ public class Vendedor {
         for(ItemVenda linha : itens){
             if(linha!=null){
                 if(linha.getVenda()==venda){
+=======
+                    System.out.print("Código: "+linha.getCod()+" Desconto: "+linha.getDesconto()+" Produto: "+
+                            linha.getProduto().getNome()+" Quantidade: "+linha.getQuantidade()+" Sub Total: "+linha.getSubTotal());
+                    if(linha.getSituacao().equals("Cancelado!"))
+                        System.out.print(" "+linha.getSituacao());
+                    System.out.println("");
+                }
+             }
+          }
+    }
+    
+    double totalemVendas;
+    public void mostrarTotaldaVenda(ItemVenda[] itens, Venda venda){
+        double total=0;
+        for(ItemVenda linha : itens){
+            if(linha!=null){
+                if(linha.getVenda()==venda && !linha.getSituacao().equals("Cancelado!")){
                     total += linha.getSubTotal();
                 }
             }
         }
+        System.out.printf("\nO total da venda é: R$ %.2f\n",total);
+        this.totalemVendas += total;
+    }
+    
+    public void TotalemVendas(ItemVenda[] itens){
+        for(ItemVenda linha : itens){
+            if(linha!=null){
+                if(!linha.getSituacao().equals("Cancelado!") && linha.getVenda().getSituacao().equals("Cancelado!")){
+                    this.totalemVendas -= linha.getSubTotal();
+                }
+            }
+        }
+        System.out.println("\n------------------TOTAL EM VENDAS--------------------------");
+        System.out.printf("\n\t\tO total em vendas é: R$ %.2f\n", this.totalemVendas);
+        System.out.println("-----------------------------------------------------------");
+    }
+    
+    public void TotalemVendasPorData(ItemVenda[] itens, String data){
+        double total=0;
+        for(ItemVenda linha : itens){
+            if(linha!=null){
+                if(linha.getVenda().getData().equals(data) && !linha.getVenda().getSituacao().equals("Cancelado!") && !linha.getSituacao().equals("Cancelado!")){
+>>>>>>> Stashed changes
+                    total += linha.getSubTotal();
+                }
+            }
+        }
+<<<<<<< Updated upstream
         System.out.println("\nO total da venda é: "+total);
     }
     
     
+=======
+        System.out.println("\n--------------TOTAL EM VENDAS POR DATA---------------------");
+        System.out.printf("\n\tNa data %s o total em vendas foi: R$ %.2f\n", data, total);
+        System.out.println("-----------------------------------------------------------");
+    }
+    
+    public void ApuradoPorItem(ItemVenda[] itens){
+        System.out.println("\n---------------------APURADO POR ITEM----------------------\n");
+        int[] total = new int[itens.length];
+        int contador=0;
+        for(ItemVenda linha : itens){
+            if(linha!=null){
+                if(!linha.getVenda().getSituacao().equals("Cancelado!") && !linha.getSituacao().equals("Cancelado!")){
+                    total[contador] = linha.getProduto().getQuantidade();
+                    linha.getProduto().setQuantidade(linha.getProduto().getQuantidade()-linha.getQuantidade());
+                    contador++;
+                }
+            }   
+        }
+        contador=0;
+        for(ItemVenda linha : itens){
+            if(linha!=null){
+                if(!linha.getVenda().getSituacao().equals("Cancelado!") && !linha.getSituacao().equals("Cancelado!")){
+                    if(linha.getProduto().getCod()==linha.getCod()){
+                        int vendidos=total[contador]-linha.getProduto().getQuantidade();
+                        System.out.println(linha.getProduto().getNome()+": "+vendidos+" = R$ "+linha.getProduto().getValorUnit()*vendidos);
+                        System.out.println("Quantidade em estoque de "+linha.getProduto().getNome()+": "+linha.getProduto().getQuantidade()+"\n");
+                        contador++;
+                    }
+                }
+            }
+        }
+        System.out.println("-----------------------------------------------------------");
+    }
+    
+    public void ApuradoPorItem(ItemVenda[] itens, String data){
+        System.out.println("\n----------------APURADO ITEM POR DATA----------------------\n");
+        System.out.printf("Na data %s foram vendidos os itens\n\n", data);
+        int[] total = new int[itens.length];
+        int contador=0;
+        for(ItemVenda linha : itens){
+            if(linha!=null){
+                if(linha.getVenda().getData().equals(data) && !linha.getVenda().getSituacao().equals("Cancelado!") && !linha.getSituacao().equals("Cancelado!")){
+                    System.out.println(linha.getQuantidade()+"x "+linha.getProduto().getNome()+": R$ "+linha.getSubTotal());
+                }
+                
+            }   
+        }
+        System.out.println("-----------------------------------------------------------");
+    }
+    //System.out.println("\t- "+linha.getProduto().getNome()+": "+linha.getQuantidade()+" = R$ "+linha.getProduto().getValorUnit()*linha.getQuantidade());
+>>>>>>> Stashed changes
     
     public int getCod() {
         return cod;
