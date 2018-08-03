@@ -1,7 +1,5 @@
 package biblioteca;
 
-import java.io.InputStream;
-import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -64,7 +62,6 @@ public class Biblioteca{
        
        emprestimos.add(adm.emprestar(cliente[2], livro.get(3)));
        
-       
        Scanner inputCliente = new Scanner(System.in);
        Scanner inputLivro = new Scanner(System.in);
        Scanner inputAutor = new Scanner(System.in);
@@ -77,12 +74,6 @@ public class Biblioteca{
         if(nomeCliente.equals(cliente[2].getNome())){
              System.out.println("Iguais");
         }
- 
-        /*for(int i=0; i<emprestimos.size();i++){
-            System.out.println("Emprestimos: "+emprestimos.get(i).getLivro().getTitulo());
-        }*/
-        
-       
         System.out.println("------------------------------------------");
         
     }

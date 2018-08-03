@@ -1,6 +1,5 @@
 package biblioteca;
 
-import java.text.Normalizer;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Period;
@@ -32,36 +31,6 @@ public class Admin {
         calendário.add(Calendar.DATE, dias);
         return calendário.getTime();
      }
-  
-    
-    /*
-    public boolean equalsIgnoreAccents(String one, String other){
-	if (one == null){
-		if (other == null){
-			return true;
-		}
-		return false;
-	}
-	return removerAcentos(one).equals(removerAcentos(other));
-    }
-    public String removerAcentos(String stringAcentuada){
-	if (stringAcentuada == null){
-		return null;
-	}
-	return Normalizer.normalize(stringAcentuada, Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "");
-    }
-    */
-    public String removerAcentos(String texto)
-{
-    String comAcentos = "ÄÅÁÂÀÃäáâàãÉÊËÈéêëèÍÎÏÌíîïìÖÓÔÒÕöóôòõÜÚÛüúûùÇç";
-    String semAcentos = "AAAAAAaaaaaEEEEeeeeIIIIiiiiOOOOOoooooUUUuuuuCc";
-
-    for (int i = 0; i < comAcentos.length(); i++)
-    {
-        texto =texto.replace(comAcentos.charAt(i), semAcentos.charAt(i));
-    }
-    return texto;
-}
     
     public Cliente cadastrarCliente(String nome, String RG, String endereco, int telefone){
         return new Cliente(nome, RG, endereco, telefone);
