@@ -2,7 +2,6 @@ package biblioteca;
 
 
 public class Emprestimo {
-    private int id_emprestimo;
     private String data_emprestimo;
     private String data_devolucao;
     private Cliente cliente;
