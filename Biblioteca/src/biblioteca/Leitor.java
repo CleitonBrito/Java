@@ -1,15 +1,17 @@
 package biblioteca;
-public class Cliente {
+public class Leitor {
     private String nome;
     private String RG;
+    private String senha;
     private String endereco;
     private int telefone;
     private int dias_multa;
     private int n_emprestimo;
     
-    public Cliente(String nome, String RG, String endereco, int telefone){
+    public Leitor(String nome, String RG, String senha, String endereco, int telefone){
         this.nome = nome;
         this.RG = RG;
+        this.senha = senha;
         this.endereco = endereco;
         this.telefone = telefone;
         this.dias_multa = 0;
@@ -31,6 +33,14 @@ public class Cliente {
 
     public void setRG(String RG) {
         this.RG = RG;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 
     public String getEndereco() {

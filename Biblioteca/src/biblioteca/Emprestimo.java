@@ -4,13 +4,14 @@ package biblioteca;
 public class Emprestimo {
     private String data_emprestimo;
     private String data_devolucao;
-    private Cliente cliente;
+    private Leitor leitor;
     private Livro livro;
+    private int n_renovacao;
     
-    public Emprestimo(String data_emprestimo, String data_devolucao, Cliente cliente, Livro livro){
+    public Emprestimo(String data_emprestimo, String data_devolucao, Leitor leitor, Livro livro){
         this.data_emprestimo = data_emprestimo;
         this.data_devolucao = data_devolucao;
-        this.cliente = cliente;
+        this.leitor = leitor;
         this.livro = livro;
     }
 
@@ -30,12 +31,12 @@ public class Emprestimo {
         this.data_devolucao = data_devolucao;
     }
 
-    public Cliente getCliente() {
-        return cliente;
+    public Leitor getLeitor() {
+        return leitor;
     }
 
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
+    public void setLeitor(Leitor leitor) {
+        this.leitor = leitor;
     }
 
     public Livro getLivro() {
@@ -44,6 +45,14 @@ public class Emprestimo {
 
     public void setLivro(Livro livro) {
         this.livro = livro;
+    }
+
+    public int getN_renovacao() {
+        return n_renovacao;
+    }
+
+    public void setN_renovacao(int n_renovacao) {
+        this.n_renovacao = n_renovacao;
     }
 
 }

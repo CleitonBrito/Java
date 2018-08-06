@@ -14,7 +14,7 @@ public class Livro {
         this.ISBN = ISBN;
         this.genero = genero;
         this.quantidade = quantidade;
-        this.situacao = "DisponÃ­vel";
+        this.situacao = "Disponível";
     }
    
     public String getTitulo() {
