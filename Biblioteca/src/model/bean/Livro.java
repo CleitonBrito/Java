@@ -1,22 +1,24 @@
-package biblioteca;
+package model.bean;
+
 public class Livro {
+    
+    private int id;
     private String titulo;
     private String autor;
     private String ISBN;
     private String genero;
-    private String situacao;
+    private int edicao;
     private int quantidade;
+    private String situacao;
 
-    
-    public Livro(String titulo, String autor, String ISBN, String genero, int quantidade){
-        this.titulo = titulo;
-        this.autor = autor;
-        this.ISBN = ISBN;
-        this.genero = genero;
-        this.quantidade = quantidade;
-        this.situacao = "Disponível";
+    public int getId() {
+        return id;
     }
-   
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
     public String getTitulo() {
         return titulo;
     }
@@ -48,6 +50,22 @@ public class Livro {
     public void setGenero(String genero) {
         this.genero = genero;
     }
+    
+    public int getEdicao() {
+        return edicao;
+    }
+
+    public void setEdicao(int edicao) {
+        this.edicao = edicao;
+    }
+    
+    public int getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
+    }
 
     public String getSituacao() {
         return situacao;
@@ -56,13 +74,4 @@ public class Livro {
     public void setSituacao(String situacao) {
         this.situacao = situacao;
     }
-
-    public int getQuantidade() {
-        return quantidade;
-    }
-
-    public void setQuantidade(int quantidade) {
-        this.quantidade = quantidade;
-    }
-   
 }
